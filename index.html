@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="sr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Karma Kids — elastične marame za nošenje beba i ručni rad za mališane</title>
+<meta name="description" content="Ručno šivene elastične marame za nošenje beba (95% pamuk, 5% likra), dečije pamučne helanke, trakice, šnalice i svečane haljine. Poručivanje na sajtu, plaćanje pouzećem.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--slate:#3c5362;--slate-d:#2a3c48;--rose:#d6b7b4;--rose-l:#ecdcda;--cream:#f0ece6;--paper:#faf8f5;--ink:#1c1c1c;--mute:#6b6f73;--line:#ded8d0;--ok:#3f7a5a;--r:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;font-size:17px;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+.serif{font-family:'Cormorant Garamond',Georgia,serif}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.1;letter-spacing:-.01em}
+h2{font-size:clamp(2rem,4.6vw,3rem)}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--slate);font-weight:500}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--slate);color:#fff;border:0;border-radius:999px;padding:.85rem 1.6rem;font:500 1rem 'Jost',sans-serif;cursor:pointer;text-decoration:none;transition:background .2s,transform .1s}
+.btn:hover{background:var(--slate-d)}.btn:active{transform:scale(.98)}
+.btn.ghost{background:transparent;color:var(--slate);border:1.5px solid var(--slate)}
+.btn.ghost:hover{background:var(--slate);color:#fff}
+.btn.block{width:100%}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+header.top{position:sticky;top:0;z-index:40;background:rgba(250,248,245,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.logo{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:1.9rem;letter-spacing:.02em;text-decoration:none;line-height:1}
+.logo small{display:block;font:400 .6rem 'Jost';letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin-top:2px}
+nav.main{display:flex;gap:26px;font-size:.95rem}
+nav.main a{text-decoration:none;color:var(--ink)}nav.main a:hover{color:var(--slate);text-decoration:underline}
+.cartbtn{position:relative;background:none;border:1.5px solid var(--slate);color:var(--slate);border-radius:999px;padding:.45rem 1rem;font:500 .95rem 'Jost';cursor:pointer;display:flex;gap:.5rem;align-items:center}
+.cartbtn:hover{background:var(--slate);color:#fff}
+.cartbtn .n{background:var(--rose);color:var(--ink);border-radius:999px;min-width:22px;height:22px;display:inline-grid;place-items:center;font-size:.8rem;padding:0 6px}
+@media(max-width:720px){nav.main{display:none}}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.price{font-weight:600;color:var(--slate)}
+select,input,textarea{font:inherit;color:inherit;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:.6rem .75rem;width:100%}
+select:focus,input:focus,textarea:focus{outline:2px solid var(--slate);outline-offset:1px;border-color:var(--slate)}
+label{font-size:.85rem;color:var(--mute);display:block;margin-bottom:4px}
+footer{background:var(--slate-d);color:#e9e4dd;padding:48px 0 30px;margin-top:80px}
+footer a{color:#fff}
+footer .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+footer h4{font:500 .8rem 'Jost';letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;color:var(--rose)}
+footer li{list-style:none;margin:.3rem 0;font-size:.95rem}
+footer .fine{border-top:1px solid rgba(255,255,255,.15);margin-top:30px;padding-top:16px;font-size:.8rem;opacity:.75}
+@media(max-width:720px){footer .cols{grid-template-columns:1fr}}
+/* cart drawer */
+#kk-ov{position:fixed;inset:0;background:rgba(20,28,34,.5);opacity:0;pointer-events:none;transition:opacity .25s;z-index:90}
+#kk-ov.on{opacity:1;pointer-events:auto}
+#kk-drawer{position:fixed;top:0;right:0;height:100%;width:min(440px,100%);background:var(--paper);z-index:100;transform:translateX(100%);transition:transform .3s;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+#kk-drawer.on{transform:none}
+#kk-drawer header{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;border-bottom:1px solid var(--line)}
+#kk-drawer header h3{font-size:1.7rem}
+.x{background:none;border:0;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--ink);padding:4px 8px}
+#kk-lines{flex:1;overflow:auto;padding:8px 20px}
+.line{display:grid;grid-template-columns:72px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.line img{width:72px;height:90px;object-fit:cover;border-radius:8px}
+.line .nm{font-weight:500;line-height:1.25}
+.line .vr{font-size:.82rem;color:var(--mute);margin-top:2px}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:999px;margin-top:8px}
+.qty button{background:none;border:0;width:32px;height:32px;font-size:1.1rem;cursor:pointer}
+.qty span{min-width:22px;text-align:center;font-size:.95rem}
+.rm{background:none;border:0;color:var(--mute);font-size:.8rem;text-decoration:underline;cursor:pointer;margin-top:6px;display:block;margin-left:auto}
+.empty{text-align:center;color:var(--mute);padding:50px 10px}
+#kk-foot{padding:16px 20px 20px;border-top:1px solid var(--line);background:#fff}
+.sum{display:flex;justify-content:space-between;font-size:.95rem;margin:3px 0}
+.sum.t{font-weight:600;font-size:1.2rem;margin:8px 0 12px}
+.help{font-size:.82rem;color:var(--mute);margin-top:10px;text-align:center}
+.help a{color:var(--slate)}
+.free{color:var(--ok)}
+/* checkout */
+#kk-co{position:fixed;inset:0;z-index:110;background:var(--paper);overflow:auto;display:none}
+#kk-co.on{display:block}
+#kk-co .in{max-width:980px;margin:0 auto;padding:22px 20px 60px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px}
+@media(max-width:820px){#kk-co .in{grid-template-columns:1fr}#kk-co .sumbox{order:-1}}
+#kk-co h2{font-size:2.2rem;margin-bottom:6px}
+#kk-co .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){#kk-co .row2{grid-template-columns:1fr}}
+#kk-co .f{margin-bottom:12px}
+.sumbox{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:18px;align-self:start}
+.sumbox .l{display:flex;justify-content:space-between;gap:10px;font-size:.92rem;padding:6px 0;border-bottom:1px dashed var(--line)}
+.pay{background:var(--cream);border-radius:10px;padding:12px 14px;font-size:.93rem;margin:6px 0 14px}
+.thanks{max-width:560px;margin:70px auto;text-align:center;padding:0 20px}
+.thanks .ck{width:74px;height:74px;border-radius:50%;background:var(--ok);color:#fff;font-size:2.4rem;display:grid;place-items:center;margin:0 auto 18px}
+.thanks .no{font:600 1.5rem 'Cormorant Garamond';background:var(--cream);display:inline-block;padding:.3rem 1.1rem;border-radius:10px;margin:10px 0}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);background:var(--slate-d);color:#fff;padding:.7rem 1.2rem;border-radius:999px;opacity:0;transition:.3s;z-index:120;font-size:.95rem;pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.sw{display:flex;flex-wrap:wrap;gap:8px}
+.sw button{width:34px;height:34px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer;padding:0}
+.sw button.on{box-shadow:0 0 0 2.5px var(--slate)}
+
+.hero{background:var(--cream);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-top:44px;padding-bottom:52px}
+.hero h1{font-size:clamp(2.7rem,6.2vw,4.9rem);margin:14px 0 18px}
+.hero h1 em{color:var(--slate);font-style:italic;font-weight:500}
+.hero p.lead{font-size:1.15rem;color:#3a3d40;max-width:34em}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 20px}
+.hero .note{font-size:.88rem;color:var(--mute)}
+.hero-img{position:relative}
+.hero-img img{border-radius:220px 220px 18px 18px;aspect-ratio:4/5;object-fit:cover;width:100%}
+.hero-img .tag{position:absolute;left:-14px;bottom:26px;background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 8px 24px rgba(0,0,0,.12);font-size:.88rem;line-height:1.3}
+.hero-img .tag b{font:600 1.5rem 'Cormorant Garamond';display:block;color:var(--slate)}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:26px;padding-top:24px}.hero-img{order:-1}.hero-img img{aspect-ratio:1/1;object-position:50% 25%;border-radius:140px 140px 14px 14px}.hero-img .tag{left:8px}}
+.strip{background:var(--slate);color:#fff}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-top:18px;padding-bottom:18px;font-size:.92rem}
+.strip b{display:block;font:600 1.3rem 'Cormorant Garamond'}
+@media(max-width:720px){.strip .wrap{grid-template-columns:1fr 1fr}}
+section.s{padding:72px 0 0}
+.sh{max-width:640px;margin-bottom:30px}.sh p{color:var(--mute);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.card img{aspect-ratio:4/5;object-fit:cover;width:100%;background:var(--cream)}
+.card .b{padding:16px;display:flex;flex-direction:column;gap:9px;flex:1}
+.card h3{font-size:1.5rem}.card .d{font-size:.9rem;color:var(--mute);flex:1}
+.card .opt{display:grid;gap:6px}
+.card .opt select,.card .opt input{padding:.5rem .65rem;font-size:.9rem}
+.card .pr{display:flex;justify-content:space-between;align-items:baseline}
+.card .pr .price{font-size:1.15rem}
+.card .badge{position:absolute;top:12px;left:12px;background:#fff;border-radius:999px;font-size:.75rem;padding:3px 10px;letter-spacing:.06em}
+.card .imgw{position:relative}
+.colors{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.colors .pics{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.colors .pics img{border-radius:var(--r);aspect-ratio:3/4;object-fit:cover;width:100%}
+.colors .pics img:nth-child(2){margin-top:30px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+.chips span{display:inline-flex;align-items:center;gap:7px;font-size:.85rem;border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 11px 4px 5px}
+.chips i{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
+@media(max-width:820px){.colors{grid-template-columns:1fr;gap:24px}}
+.story{display:grid;grid-template-columns:.8fr 1.2fr;gap:44px;align-items:center}
+.story img{border-radius:var(--r);aspect-ratio:3/4;object-fit:cover;width:100%}
+.story p{margin:12px 0;color:#34373a}
+@media(max-width:820px){.story{grid-template-columns:1fr}}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.steps div{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.steps b{font:600 2.6rem 'Cormorant Garamond';color:var(--rose)}
+@media(max-width:720px){.steps{grid-template-columns:1fr}}
+.rev{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.rev blockquote{background:var(--rose-l);border-radius:var(--r);padding:24px;font:500 1.35rem/1.35 'Cormorant Garamond',serif}
+.rev cite{display:block;margin-top:12px;font:500 .85rem 'Jost';font-style:normal;color:var(--slate)}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:500}
+details p{margin-top:8px;color:#3d4043;font-size:.95rem}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+ <a class="logo" href="index.html">KARMA.<small>Kids</small></a>
+ <nav class="main"><a href="marama.html">Marame</a><a href="#kolekcija">Kolekcija</a><a href="#boje">Boje</a><a href="#poruci">Kako poručiti</a><a href="#pitanja">Pitanja</a></nav>
+ <button class="cartbtn" data-open-cart aria-label="Otvori korpu">Korpa <span class="n cart-n">0</span></button>
+</div></header>
+
+<section class="hero"><div class="wrap">
+ <div class="hero-txt">
+  <span class="eyebrow">Atelje Karma Kids · Srbija</span>
+  <h1>Nosite sa ljubavlju, <em>rastite sa lakoćom.</em></h1>
+  <p class="lead">Ručno šivene elastične marame za nošenje beba od 95% pamuka, dečije pamučne stvari i svečane haljine po meri. Izaberite boju, dodajte u korpu i platite pouzećem.</p>
+  <div class="cta"><a class="btn" href="marama.html">Izaberi maramu</a><a class="btn ghost" href="#kolekcija">Cela kolekcija</a></div>
+  <p class="note">Šaljemo u sve zemlje · Uz dve marame poštarina je besplatna</p>
+ </div>
+ <div class="hero-img"><img src="img/hero.jpg" alt="Karma elastična marama u boji kajsije, nošenje bebe" width="1049" height="1400"><div class="tag"><b>650+</b>mama je izabralo Karma maramu</div></div>
+</div></section>
+
+<div class="strip"><div class="wrap">
+ <div><b>95% pamuk, 5% likra</b>mekano, diše, rasteže se</div>
+ <div><b>0–3 godine</b>nosivost 3–15 kg</div>
+ <div><b>Ručni rad</b>šiveno u našem ateljeu</div>
+ <div><b>Pouzećem</b>plaćate kad paket stigne</div>
+</div></div>
+
+<section class="s wrap" id="kolekcija">
+ <div class="sh"><span class="eyebrow">Kolekcija</span><h2>Za mame, bebe i male princeze</h2><p>Sve što vidite ovde možete odmah dodati u korpu.</p></div>
+ <div class="grid" id="grid"></div>
+</section>
+
+<section class="s wrap" id="boje">
+ <div class="colors">
+  <div><span class="eyebrow">Preko 20 nijansi</span><h2>Odaberite boju koja vam prija</h2>
+   <p style="margin-top:10px;color:#34373a">Bilo da volite klasiku ili se igrate bojama — marame, helanke, trakice i šnalice šijemo u nežnim pastelima i dubokim tonovima. Većinu boja Classic marama imamo na lageru, pa paketi kreću više puta nedeljno.</p>
+   <div class="chips" id="chips"></div>
+   <a class="btn" href="marama.html">Izaberi boju marame</a></div>
+  <div class="pics"><img src="img/stack3.jpg" alt="Složene marame u različitim bojama" loading="lazy"><img src="img/stack1.jpg" alt="Marame u petrolej, mint, plavim nijansama" loading="lazy"></div>
+ </div>
+</section>
+
+<section class="s wrap">
+ <div class="story">
+  <img src="img/atelje.jpg" alt="Marija za šivaćom mašinom u ateljeu" loading="lazy">
+  <div><span class="eyebrow">Ko šije za vas</span><h2>Iza svakog komada stojim ja</h2>
+   <p>Marija je počela da šije sa 9 godina, a prve klijente imala je sa 13. Danas iz sopstvenog ateljea izlaze Karma marame, pamučne stvari za decu i svečane haljine — od krojenja i šivenja do peglanja i pakovanja.</p>
+   <p>Svaka marama stiže u kutiji sa mašnom, a unutra vas čeka personalizovana posveta sa vašim imenom — idealno i kao poklon.</p>
+   <p><a href="https://youtu.be/o0x1jfiTQnI" target="_blank" rel="noopener" style="color:var(--slate)">Besplatan tutorijal za pravilno vezivanje marame (YouTube) &rarr;</a></p></div>
+ </div>
+</section>
+
+<section class="s wrap" id="poruci">
+ <div class="sh"><span class="eyebrow">Kako poručiti</span><h2>Tri koraka do paketa</h2></div>
+ <div class="steps">
+  <div><b>1</b><h3 style="font-size:1.4rem">Izaberite</h3><p>Boju marame, veličinu helanki, model trakice — i dodajte u korpu.</p></div>
+  <div><b>2</b><h3 style="font-size:1.4rem">Unesite podatke</h3><p>Ime, adresa, telefon i, ako želite, ime za posvetu ili napomenu.</p></div>
+  <div><b>3</b><h3 style="font-size:1.4rem">Platite pouzećem</h3><p>Paket stiže na vašu adresu, a plaćate pri preuzimanju. Classic marame šaljemo više puta nedeljno.</p></div>
+ </div>
+</section>
+
+<section class="s wrap">
+ <div class="sh"><span class="eyebrow">Reči kupaca</span><h2>Šta kažu mame</h2></div>
+ <div class="rev">
+  <blockquote>„Marija, ti si sjajna! Pratim te godinama i mogu samo da kažem Hvala za sve što radiš!“<cite>Kupac</cite></blockquote>
+  <blockquote>„Pohvala za vaše haljine. ❤️ Ćerka i ja smo bile prelepe, svima sam preporučila da naruče od vas.“<cite>Kupac</cite></blockquote>
+ </div>
+</section>
+
+<section class="s wrap" id="pitanja" style="max-width:820px">
+ <div class="sh"><span class="eyebrow">Pitanja</span><h2>Često pitate</h2></div>
+ <details><summary>Od koje težine i do kada se marama koristi?</summary><p>Marama se koristi od rođenja (preporučuje se da beba ima najmanje 3 kg) i pokriva ceo period nošenja, do maksimalno 15 kg, odnosno oko 3 godine. Veličina je univerzalna i odgovara svima.</p></details>
+ <details><summary>Koja je razlika između Classic i Unique marame?</summary><p>Classic je jednobojna, jednoslojna i jednostavna. Unique je specijalno dizajnirana: ima dupli središnji deo, čvršća je, ojačana štepovima i može biti jednobojna ili dvobojna.</p></details>
+ <details><summary>Kako se vezuje marama?</summary><p>Tutorijali za sve načine vezivanja — napred, bočno, na leđa — nalaze se na YouTube kanalu Marija Karma, u folderu „Marame za bebe“.</p></details>
+ <details><summary>Koliko se čeka na isporuku?</summary><p>Većinu boja Classic marama imamo na lageru i šaljemo ih više puta nedeljno. Unique marame se rade po porudžbini, 2–7 dana. Svečane haljine i ručno rađeni komadi traže najmanje 14 dana. Šaljemo i u inostranstvo.</p></details>
+ <details><summary>Kako plaćam i koliko košta dostava?</summary><p>Plaćanje je pouzećem, pri preuzimanju paketa. Dostava je 390 RSD, a uz dve marame poštarina je besplatna.</p></details>
+ <details><summary>Mogu li da poručim kao poklon?</summary><p>Naravno. Svaka marama dolazi u kutiji sa mašnom, a unutar pakovanja pišemo personalizovanu posvetu sa imenom — upišite ga prilikom izbora marame ili u napomenu pri poručivanju.</p></details>
+</section>
+
+<footer><div class="wrap">
+ <div class="cols">
+  <div><a class="logo" href="index.html" style="color:#fff">KARMA.</a><p style="margin-top:10px;max-width:26em">Atelje Karma Kids — elastične marame za nošenje beba i ručni rad za mališane. By Marija Stojković.</p></div>
+  <div><h4>Prodavnica</h4><ul><li><a href="marama.html">Elastične marame</a></li><li><a href="#kolekcija">Helanke i dodaci</a></li><li><a href="#poruci">Kako poručiti</a></li></ul></div>
+  <div><h4>Pitanja?</h4><ul><li>Pišite nam na Instagramu <a href="https://www.instagram.com/_karma_kids_/" target="_blank" rel="noopener">@_karma_kids_</a></li><li><a href="https://youtu.be/o0x1jfiTQnI" target="_blank" rel="noopener">Tutorijal za vezivanje</a></li><li>Haljine: @_karma_couture_</li></ul></div>
+ </div>
+ <div class="fine">Demo prodavnica napravljena na osnovu Instagram profila @_karma_kids_. Cene i uslovi dostave su okvirni dok ih brend ne potvrdi.</div>
+</div></footer>
+
+<script>
+(function(){
+var KEY='karmakids-cart-v1';
+var SHIP=390, FREE_MARAME=2; // dostava: cena je procena, besplatna uz 2 marame (izvor: IG)
+// [naziv, hex, classic, unique]
+var COLORS=[
+['Svetlo siva','#b9bbbd',1,1],['Tamno siva','#4a4b4e',1,1],['Vanila','#f1e7c2',1,1],['Nude (boja kože)','#e3b9a0',1,1],
+['Boja peska','#c9a27e',1,0],['Boja peska svetla','#d8bc9c',0,1],['Boja peska tamna','#b08a63',0,1],['Kajsija','#f3b98d',1,1],['Karmin crvena','#d1232b',1,1],
+['Puder roze svetla','#d7b3ad',1,1],['Puder roze tamna','#a97f83',1,1],['Svetlo roze','#efc4c6',1,1],['Koralna','#e57d7d',1,0],
+['Burgundi svetla','#a63a5a',1,0],['Burgundi tamna','#6d1a3a',1,0],['Lavanda','#c7b0dc',1,0],['Svetlo plava','#a9c6e8',1,1],
+['Pastel plava','#bcd3ee',1,1],['Džins','#3f73ad',1,0],['Teget','#1f2b4a',1,1],['Petrolej','#0f6a86',1,1],['Borovnica','#4a4f92',1,1],
+['Mint','#a8e0d3',1,1],['Pistać','#b8d59a',1,1],['Maslinasta','#55632c',1,1]];
+var PHOTO={'Petrolej':'petrolej','Mint':'mint','Svetlo plava':'bebaplava','Džins':'dzins','Borovnica':'borovnica','Koralna':'koralna','Maslinasta':'maslinasta','Kajsija':'kajsija','Vanila':'vanila','Lavanda':'lavanda','Boja peska':'pesak','Svetlo siva':'siva','Tamno siva':'tamnosiva'};
+var EXTRA=['Crna','Bela','Smaragdna','Trava zelena'];
+function colorNames(k){return COLORS.filter(function(c){return c[k]}).map(function(c){return c[0]})}
+// cene = ESTIMATE (placeholder), vidi brief.md
+var PRODUCTS={
+ classic:{name:'Classic elastična marama',price:4290,img:'petrolej'},
+ unique:{name:'Unique elastična marama',price:5490,img:'unique'},
+ helanke:{name:'Dečije pamučne helanke',price:1490,img:'helanke'},
+ trakica:{name:'Pamučna trakica za kosu',price:690,img:'trakice'},
+ snalica:{name:'Pamučna šnalica sa mašnom',price:490,img:'snalice'},
+ lucy:{name:'Svečana haljina „Lucy“ (vanila)',price:12900,img:'lucy'},
+ krila:{name:'Ručno vezena krila za vilu',price:3900,img:'krila'}
+};
+function fmt(n){return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g,'.')+' RSD'}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+var cart=[];
+function load(){try{var r=localStorage.getItem(KEY);cart=r?JSON.parse(r):[];if(!Array.isArray(cart))cart=[];cart=cart.filter(function(l){return l&&PRODUCTS[l.id]})}catch(e){cart=[]}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(cart))}catch(e){}}
+function lineKey(id,opts){return id+'|'+JSON.stringify(opts)}
+function add(id,opts,qty){
+ var p=PRODUCTS[id];if(!p)return;opts=opts||{};qty=qty||1;var k=lineKey(id,opts);
+ var f=cart.filter(function(l){return l.key===k})[0];
+ if(f)f.qty+=qty;else cart.push({key:k,id:id,opts:opts,qty:qty});
+ save();render();toast(p.name+' je u korpi');
+}
+function totals(){
+ var sub=0,marame=0,trak=0,trakP=0;
+ cart.forEach(function(l){var p=PRODUCTS[l.id];sub+=p.price*l.qty;if(l.id==='classic'||l.id==='unique')marame+=l.qty;if(l.id==='trakica'){trak+=l.qty;trakP=p.price}});
+ var disc=Math.floor(trak/6)*trakP; // akcija 5+1 gratis na trakice
+ var ship=cart.length===0?0:(marame>=FREE_MARAME?0:SHIP);
+ return {sub:sub,disc:disc,ship:ship,total:sub-disc+ship,marame:marame,count:cart.reduce(function(a,l){return a+l.qty},0)};
+}
+function optText(l){var o=l.opts,a=[];for(var k in o){if(o[k])a.push(k+': '+o[k])}return a.join(' · ')}
+var $=function(s,r){return (r||document).querySelector(s)};
+var HELP='Pitanja? Pišite nam na Instagramu <a href="https://www.instagram.com/_karma_kids_/" target="_blank" rel="noopener">@_karma_kids_</a>';
+function build(){
+ var h='<div id="kk-ov"></div><aside id="kk-drawer" aria-label="Korpa" aria-hidden="true"><header><h3>Vaša korpa</h3><button class="x" id="kk-close" aria-label="Zatvori">&times;</button></header><div id="kk-lines"></div><div id="kk-foot"></div></aside>'+
+ '<div id="kk-co" role="dialog" aria-modal="true" aria-label="Poručivanje"></div><div class="toast" id="kk-toast"></div>';
+ var d=document.createElement('div');d.innerHTML=h;while(d.firstChild)document.body.appendChild(d.firstChild);
+ $('#kk-ov').addEventListener('click',closeCart);$('#kk-close').addEventListener('click',closeCart);
+ document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeCart()}});
+ document.querySelectorAll('[data-open-cart]').forEach(function(b){b.addEventListener('click',openCart)});
+}
+function openCart(){$('#kk-drawer').classList.add('on');$('#kk-ov').classList.add('on');$('#kk-drawer').setAttribute('aria-hidden','false')}
+function closeCart(){$('#kk-drawer').classList.remove('on');$('#kk-ov').classList.remove('on');$('#kk-drawer').setAttribute('aria-hidden','true')}
+var tt;function toast(m){var t=$('#kk-toast');t.textContent=m;t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},1800)}
+function imgOf(l){var o=l.opts||{};var im=PRODUCTS[l.id].img;if(l.id==='classic'&&o['Boja']&&PHOTO[o['Boja']])im=PHOTO[o['Boja']];return 'img/'+im+'.jpg'}
+function render(){
+ var t=totals();
+ document.querySelectorAll('.cart-n').forEach(function(n){n.textContent=t.count});
+ var L=$('#kk-lines'),F=$('#kk-foot');if(!L)return;
+ if(!cart.length){L.innerHTML='<div class="empty"><p class="serif" style="font-size:1.6rem;color:var(--ink)">Korpa je prazna</p><p>Izaberite maramu ili dodatak i dodajte ih u korpu.</p></div>';
+  F.innerHTML='<button class="btn block ghost" id="kk-cont">Nastavi kupovinu</button><p class="help">'+HELP+'</p>';$('#kk-cont').addEventListener('click',closeCart);return}
+ L.innerHTML=cart.map(function(l,i){var p=PRODUCTS[l.id];return '<div class="line"><img src="'+imgOf(l)+'" alt="" loading="lazy"><div><div class="nm">'+esc(p.name)+'</div><div class="vr">'+esc(optText(l))+'</div><div class="qty"><button data-a="-" data-i="'+i+'" aria-label="Manje">&minus;</button><span>'+l.qty+'</span><button data-a="+" data-i="'+i+'" aria-label="Više">+</button></div></div><div style="text-align:right"><div class="price">'+fmt(p.price*l.qty)+'</div><button class="rm" data-a="x" data-i="'+i+'">Ukloni</button></div></div>'}).join('');
+ var need=FREE_MARAME-t.marame;
+ F.innerHTML='<div class="sum"><span>Međuzbir</span><span>'+fmt(t.sub)+'</span></div>'+
+  (t.disc?'<div class="sum free"><span>Akcija 5+1 gratis (trakice)</span><span>&minus;'+fmt(t.disc)+'</span></div>':'')+
+  '<div class="sum"><span>Dostava</span><span class="'+(t.ship?'':'free')+'">'+(t.ship?fmt(t.ship):'Besplatno')+'</span></div>'+
+  (t.marame>0&&need>0?'<div class="help" style="text-align:left;margin:4px 0">Dodajte još '+need+' maramu — uz dve marame poštarina je besplatna.</div>':'')+
+  '<div class="sum t"><span>Ukupno</span><span>'+fmt(t.total)+'</span></div><button class="btn block" id="kk-go">Nastavi na poručivanje</button><p class="help">Plaćanje pouzećem, pri preuzimanju paketa.<br>'+HELP+'</p>';
+ $('#kk-go').addEventListener('click',checkout);
+}
+document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('#kk-lines [data-a]');if(!b)return;var i=+b.dataset.i,a=b.dataset.a;
+ if(a==='+')cart[i].qty++;else if(a==='-'){cart[i].qty--;if(cart[i].qty<1)cart.splice(i,1)}else cart.splice(i,1);save();render()});
+function checkout(){
+ closeCart();var t=totals(),C=$('#kk-co');
+ C.innerHTML='<div class="in"><form id="kk-form" novalidate><button type="button" class="x" id="kk-back" style="margin-left:-8px;font-size:1rem">&larr; Nazad na korpu</button><h2>Podaci za isporuku</h2><p style="color:var(--mute);margin-bottom:18px">Popunite podatke i potvrdite porudžbinu. Plaćate pouzećem.</p>'+
+ '<div class="f"><label for="f-ime">Ime i prezime *</label><input id="f-ime" name="ime" required autocomplete="name"></div>'+
+ '<div class="f"><label for="f-adr">Adresa (ulica i broj) *</label><input id="f-adr" name="adresa" required autocomplete="street-address"></div>'+
+ '<div class="row2"><div class="f"><label for="f-grad">Grad *</label><input id="f-grad" name="grad" required autocomplete="address-level2"></div><div class="f"><label for="f-pb">Poštanski broj *</label><input id="f-pb" name="pb" required inputmode="numeric" autocomplete="postal-code"></div></div>'+
+ '<div class="row2"><div class="f"><label for="f-tel">Telefon *</label><input id="f-tel" name="tel" type="tel" required autocomplete="tel"></div><div class="f"><label for="f-em">E-mail *</label><input id="f-em" name="email" type="email" required autocomplete="email"></div></div>'+
+ '<div class="f"><label for="f-nap">Napomena / personalizacija (npr. ime za posvetu, poklon)</label><textarea id="f-nap" name="napomena" rows="3"></textarea></div>'+
+ '<div class="pay"><strong>Plaćanje pouzećem</strong> — novac predajete kuriru pri preuzimanju paketa.</div><p id="kk-err" style="color:#b3261e;font-size:.9rem;margin-bottom:10px" role="alert"></p>'+
+ '<button class="btn block" type="submit">Potvrdi porudžbinu · '+fmt(t.total)+'</button><p class="help">'+HELP+'</p></form>'+
+ '<div class="sumbox"><h3 style="font-size:1.5rem;margin-bottom:8px">Vaša porudžbina</h3>'+cart.map(function(l){var p=PRODUCTS[l.id];return '<div class="l"><span>'+l.qty+' × '+esc(p.name)+(optText(l)?'<br><small style="color:var(--mute)">'+esc(optText(l))+'</small>':'')+'</span><span>'+fmt(p.price*l.qty)+'</span></div>'}).join('')+
+ (t.disc?'<div class="l free"><span>Akcija 5+1 gratis</span><span>&minus;'+fmt(t.disc)+'</span></div>':'')+'<div class="l"><span>Dostava</span><span>'+(t.ship?fmt(t.ship):'Besplatno')+'</span></div><div class="l" style="font-weight:600;font-size:1.1rem;border:0"><span>Ukupno</span><span>'+fmt(t.total)+'</span></div></div></div>';
+ C.classList.add('on');document.body.style.overflow='hidden';C.scrollTop=0;
+ $('#kk-back').addEventListener('click',function(){C.classList.remove('on');document.body.style.overflow='';openCart()});
+ $('#kk-form').addEventListener('submit',function(e){e.preventDefault();var f=e.target,bad=null;
+  f.querySelectorAll('[required]').forEach(function(i){if(!bad&&!i.value.trim())bad=i});
+  var em=f.email.value.trim();
+  if(!bad&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em))bad=f.email;
+  if(bad){$('#kk-err').textContent='Proverite polje: '+(bad.labels&&bad.labels[0]?bad.labels[0].textContent.replace(' *',''):'');bad.focus();return}
+  var no='KK-'+String(Date.now()).slice(-6);var name=f.ime.value.trim().split(/\s+/)[0];
+  var tot=totals();cart=[];save();render();
+  C.innerHTML='<div class="thanks"><div class="ck">&#10003;</div><h2>Hvala, porudžbina je primljena</h2><div class="no">Broj porudžbine: '+no+'</div><p>'+esc(name)+', hvala na poverenju. Ukupno za plaćanje pouzećem: <strong>'+fmt(tot.total)+'</strong>.</p><p style="color:var(--mute);margin-top:10px">Javićemo se ako nam zatreba neki detalj oko personalizacije ili mera.</p><p style="margin-top:22px"><button class="btn" id="kk-done">Nazad na sajt</button></p><p class="help">'+HELP+'</p></div>';
+  $('#kk-done').addEventListener('click',function(){C.classList.remove('on');document.body.style.overflow=''});
+  C.scrollTop=0});
+}
+window.KK={add:add,fmt:fmt,PRODUCTS:PRODUCTS,COLORS:COLORS,PHOTO:PHOTO,EXTRA:EXTRA,colorNames:colorNames,openCart:openCart,esc:esc};
+load();
+function init(){build();render()}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+
+</script>
+<script>
+(function(){
+var K=window.KK,all=K.colorNames(2).concat(K.EXTRA);
+var sizes=[];for(var i=1;i<=12;i++)sizes.push(i+(i===1?' godina':' god.'));
+var items=[
+ {href:'marama.html?tip=classic',img:'petrolej',name:'Classic elastična marama',desc:'Jednobojna, jednoslojna i jednostavna. 95% pamuk, 5% likra, od rođenja do 15 kg. Preko 20 boja.',id:'classic',badge:'Najprodavanija'},
+ {href:'marama.html?tip=unique',img:'unique',name:'Unique elastična marama',desc:'Dupli središnji deo, ojačana štepovima, jednobojna ili dvobojna. Radi se po porudžbini.',id:'unique',badge:'Po porudžbini'},
+ {id:'helanke',img:'helanke',name:'Dečije pamučne helanke',desc:'Mekane i udobne, u preko 20 nijansi. Klasične ili zvoncare, za sve dečije veličine. Uz dva para dobijate trakicu za kosu na poklon.',
+  f:[{k:'Veličina',o:sizes},{k:'Model',o:['Klasične helanke','Zvoncare']},{k:'Boja',o:all}]},
+ {id:'trakica',img:'trakice',name:'Pamučna trakica za kosu',desc:'Pet modela, izrada po meri, preko 30 boja. Akcija 5+1 gratis — svaka šesta trakica je besplatna.',
+  f:[{k:'Model',o:['Klasik ravna, bez detalja','Uvijena','Klasik sa 2D mašnom','Klasik sa 3D puf mašnom','Tanka sa prednjim vezivanjem']},{k:'Boja',o:all}]},
+ {id:'snalica',img:'snalice',name:'Pamučna šnalica sa mašnom',desc:'Ručno rađena od najmekšeg pamuka, nežna prema kosi, a čvrsto stoji ceo dan. 25 nijansi.',f:[{k:'Boja',o:all}],badge:'Novo'},
+ {id:'lucy',img:'lucy',name:'Svečana haljina „Lucy“',desc:'Vanila haljina za krštenje ili prvi rođendan: meki til, saten i fina čipka, pamučna postava. Šije se po meri, najmanje 14 dana.',
+  f:[{k:'Datum kada je potrebna',t:'npr. 15.11.'},{k:'Mere / uzrast',t:'visina, obim grudi, struka, dužina…'}]},
+ {id:'krila',img:'krila',name:'Ručno vezena krila za vilu',desc:'Hayel til, bordura i ručno ušiveni cvetovi i 3D leptirići. Boja i motivi po želji, uz haljinu ili kao poseban aksesoar.',
+  f:[{k:'Boja krila',t:'npr. puder roze'},{k:'Motivi',t:'cvetići, leptiri…'}]}
+];
+var g=document.getElementById('grid');
+items.forEach(function(it,ix){
+ var p=K.PRODUCTS[it.id],d=document.createElement('article');d.className='card';
+ var opt='';
+ (it.f||[]).forEach(function(f,j){var id='o'+ix+'_'+j;
+  if(f.o)opt+='<div><label for="'+id+'">'+f.k+'</label><select id="'+id+'" data-k="'+f.k+'">'+f.o.map(function(x){return '<option>'+K.esc(x)+'</option>'}).join('')+'</select></div>';
+  else opt+='<div><label for="'+id+'">'+f.k+' *</label><input id="'+id+'" data-k="'+f.k+'" placeholder="'+K.esc(f.t)+'" required></div>'});
+ var pre=it.href?'<a href="'+it.href+'" style="display:block">':'<div>';var post=it.href?'</a>':'</div>';
+ d.innerHTML='<div class="imgw">'+pre+'<img src="img/'+it.img+'.jpg" alt="'+K.esc(it.name)+'" loading="lazy">'+post+(it.badge?'<span class="badge">'+it.badge+'</span>':'')+'</div><div class="b"><h3>'+it.name+'</h3><p class="d">'+it.desc+'</p>'+(opt?'<div class="opt">'+opt+'</div>':'')+
+  '<div class="pr"><span class="price">'+(it.href?'od ':'')+K.fmt(p.price)+'</span></div>'+
+  (it.href?'<a class="btn" href="'+it.href+'">Izaberi boju</a>':'<button class="btn" type="button">Dodaj u korpu</button>')+'</div>';
+ var btn=d.querySelector('button.btn');
+ if(btn)btn.addEventListener('click',function(){var o={},bad=null;
+  d.querySelectorAll('[data-k]').forEach(function(e){if(e.required&&!e.value.trim()&&!bad)bad=e;o[e.dataset.k]=e.value.trim()});
+  if(bad){bad.focus();bad.style.borderColor='#b3261e';return}
+  K.add(it.id,o,1)});
+ g.appendChild(d)});
+var ch=document.getElementById('chips');
+K.COLORS.filter(function(c){return c[2]}).forEach(function(c){var s=document.createElement('span');s.innerHTML='<i style="background:'+c[1]+'"></i>'+c[0];ch.appendChild(s)});
+})();
+</script>
+</body>
+</html>
